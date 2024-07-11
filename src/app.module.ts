@@ -4,9 +4,8 @@ import { AppService } from './app.service';
 import { loggingMiddleware, PrismaModule } from 'nestjs-prisma';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { join } from '@prisma/client/runtime/library';
-import * as process from 'process';
+import { ConfigModule } from '@nestjs/config';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -17,7 +16,7 @@ import * as process from 'process';
       playground: true,
       sortSchema: true,
       // TODO autoSchemaFile 设置路径
-      autoSchemaFile: 'src/schema.graphql'
+      autoSchemaFile: 'src/schema.graphql',
     }),
     PrismaModule.forRoot({
       isGlobal: true,
@@ -30,6 +29,7 @@ import * as process from 'process';
         ],
       },
     }),
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
