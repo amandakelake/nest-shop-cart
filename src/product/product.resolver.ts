@@ -9,7 +9,9 @@ export class ProductResolver {
   constructor(private readonly productService: ProductService) {}
 
   @Mutation(() => Product)
-  createProduct(@Args('createProductInput') createProductInput: CreateProductInput) {
+  createProduct(
+    @Args('createProductInput') createProductInput: CreateProductInput,
+  ) {
     return this.productService.create(createProductInput);
   }
 
@@ -24,8 +26,13 @@ export class ProductResolver {
   }
 
   @Mutation(() => Product)
-  updateProduct(@Args('updateProductInput') updateProductInput: UpdateProductInput) {
-    return this.productService.update(updateProductInput.id, updateProductInput);
+  updateProduct(
+    @Args('updateProductInput') updateProductInput: UpdateProductInput,
+  ) {
+    return this.productService.update(
+      updateProductInput.id,
+      updateProductInput,
+    );
   }
 
   @Mutation(() => Product)
