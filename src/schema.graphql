@@ -20,6 +20,7 @@ type Product {
 
 type Query {
   product(id: Int!): Product!
+  products: [Product!]!
 }
 
 input UpdateProductInput {
