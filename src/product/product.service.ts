@@ -7,7 +7,9 @@ import { PrismaService } from 'nestjs-prisma';
 export class ProductService {
   constructor(private prisma: PrismaService) {}
   create(createProductInput: CreateProductInput) {
-    return `create product`;
+    return this.prisma.product.create({
+      data: createProductInput,
+    });
   }
 
   findAll() {
