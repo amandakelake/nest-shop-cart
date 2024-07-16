@@ -4,12 +4,10 @@
 
 input CreateProductInput {
   brand: String!
-  createdAt: DateTime!
   description: String!
   image: String!
   name: String!
   price: Float!
-  updatedAt: DateTime!
 }
 
 """
@@ -41,11 +39,9 @@ type Query {
 
 input UpdateProductInput {
   brand: String
-  createdAt: DateTime
   description: String
   id: Int!
   image: String
   name: String
   price: Float
-  updatedAt: DateTime
 }
